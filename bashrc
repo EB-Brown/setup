@@ -119,6 +119,8 @@ fi
 source ~/.pcmasterrc
 
 export PATH="$PATH:$HOME/bin"
+alias laptop='ssh eb@eb-TRACER-II.local'
+alias work='pulse & remmina'
 
 eval "$(thefuck --alias)"
 
