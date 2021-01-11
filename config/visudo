@@ -1,0 +1,5 @@
+Defaults env_editor,editor=/usr/bin/vim
+
+Defaults timestamp_timeout=30
+Defaults passwd_timeout=0
+
