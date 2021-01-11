@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -x
+
+resolv=/etc/resolv.conf
+
+(sudo su << END
+while inotifywait -e modify $resolv; do
+    tee $resolv << EOF
+search local utc.com utcaus.com eh.pweh.com pw.utc.com
+nameserver ::1
+nameserver 127.0.0.1
+EOF
+done
+END
+)& 
+
+pulseUi &>/dev/null
+
+wait
