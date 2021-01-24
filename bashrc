@@ -116,11 +116,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
+LS_COLORS=$LS_COLORS:'di=0;35'; export LS_COLORS
+
 source ~/.pcmasterrc
 
 export PATH="$PATH:$HOME/bin"
 alias laptop='ssh eb@eb-TRACER-II.local'
-alias work='pulse & remmina'
+
+alias update='sudo pacman -Syu'
+alias disable_kwin="qdbus org.kde.KWin /Compositor suspend"
+alias enable_kwin="qdbus org.kde.KWin /Compositor resume"
+alias reinstall_today="cat /var/log/pacman.log | grep -a "`date '+%Y-%m-%d'`.*upgraded" | awk '{print $4}' | xargs sudo pacman -S --noconfirm"
+
 
 eval "$(thefuck --alias)"
 
